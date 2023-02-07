@@ -43,7 +43,7 @@ def finished():
 def maze_solver():
     if arm_motor.angle() <= -90 and ultrasonicSensor.distance() >= 300:
         return True
-    if arm_motor.angle() > 0 and ultrasonicSensor.distance() >= 300:
+    if arm_motor.angle() >= 0 and ultrasonicSensor.distance() >= 300:
         return True
     else:
         print("FAlse")
@@ -62,34 +62,34 @@ while y == 0:
             
         if x == 0:
             # right side
+          #  arm_motor.run_until_stalled(500)
             print(arm_motor.angle())
             print(ultrasonicSensor.distance())
-            arm_motor.run_until_stalled(500)
+            
             robot.drive(50, 0)
             time.sleep(1)
-            x = 1
+           # x = 1
         
         
-      
-        if x == 1:
-            # left side
-            arm_motor.run_until_stalled(-500)
-            print(arm_motor.angle())
-            print(ultrasonicSensor.distance())
-            robot.drive(50, 0)
-            time.sleep(1)
-            x = 0
-
+    
+    #    if x == 1:
+     #       # left side
+      #      arm_motor.run_until_stalled(-500)
+       #     print(arm_motor.angle())
+        #    print(ultrasonicSensor.distance())
+         #   robot.drive(50, 0)
+          #  time.sleep(1)
+           # x = 0
     while maze_solver() == True:
       
         #setting up the do until
-        if arm_motor.angle() <= -90:
-            while not finished():
-                robot.drive(200, 0)
-                if finished() == True:
-                    robot.turn(60)
-                    robot.straight(70)
-                    break
+#        if arm_motor.angle() <= -90:
+ #           while not finished():
+  #              robot.drive(200, 0)
+   #             if finished() == True:
+    #                robot.turn(60)
+     #               robot.straight(70)
+      #              break
 
         if arm_motor.angle() > 0:
             finished() == False
